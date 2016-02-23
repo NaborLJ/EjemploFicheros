@@ -7,6 +7,7 @@ package ejemploficheros;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -102,10 +103,34 @@ public class LeerFichero {
     public void visualizarArray(){
             System.out.print(lista);
     }
-    public void leerSiPar(){
+     public void lerNotaPar(String nombreFicheroLec, String nombreFicheroEsc) {
         
-        if (datos[2]%2==0){
-            
+         Scanner sc = null;
+         PrintWriter escribir = null;
+        try {
+            File f = new File (nombreFicheroEsc);
+            File x = new File (nombreFicheroLec);
+            sc = new Scanner(x);
+            escribir = new PrintWriter(f);
+            while(sc.hasNextLine()){
+                String res = sc.nextLine();
+                String[]datos = res.split(",");
+                if (Integer.parseInt(datos[2])%2==0){
+                    escribir.println(datos[0]+","+datos[1]+","+Integer.parseInt(datos[2]));
+                }
+            }
         }
+        catch (FileNotFoundException ex) {
+            System.out.println("Erro no ficheiro " + ex.toString());
+        }
+        finally{
+            sc.close();
+            escribir.close();
+        }
+        
     }
 }
+            
+        
+    
+
