@@ -26,6 +26,7 @@ public class EjemploFicheros {
         //prueba.visualizarArray();
         //obx.escribir("num.txt");
         obx.escribir("alumnota.txt");
+        prueba.leerFichero("alumnota.txt");
     }
     
 }
